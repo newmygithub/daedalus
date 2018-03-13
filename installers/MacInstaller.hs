@@ -60,7 +60,7 @@ main opts@Options{..} = do
       signInstaller signingConfig (toText tempInstaller) oOutput
       checkSignature oOutput
     else do
-      echo "Pull request, not signing the installer."
+      printf "Not signing the installer: PullReq=%s, CI=%s\n" (show oPullReq :: String) (show oCI :: String)
       run "cp" [toText tempInstaller, oOutput]
 
   run "rm" [toText tempInstaller]
