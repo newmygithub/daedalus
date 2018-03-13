@@ -54,7 +54,7 @@ main opts@Options{..} = do
 
   tempInstaller <- makeInstaller opts appRoot
 
-  let shouldSign = oPullReq == Nothing
+  let shouldSign = oPullReq == Nothing || oCI == Buildkite
   if  shouldSign
     then do
       signInstaller signingConfig (toText tempInstaller) oOutput
