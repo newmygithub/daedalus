@@ -43,6 +43,8 @@ del /f curl.exe curl-ca-bundle.crt libcurl.dll
 	popd & exit /b 1)
 
 @echo Installing NPM
+call npm --version
+call npm cache clean --force
 call npm install
 @if %errorlevel% neq 0 (@echo FAILED: npm install
     exit /b 1)
